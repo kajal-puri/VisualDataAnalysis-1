@@ -18,13 +18,15 @@ print(fmri)
 #sns.relplot(x="total_bill", y="tip", hue="smoker", style="size", data=tips)
 #sns.relplot(x="total_bill", y="tip", hue="size", palette="ch:r=-.5,l=.8", size="size", data=tips)
 
-#1.Are there days of the week on which the dataset covers only one meal, i.e., either lunch or dinner?
+print ("1. Are there days of the week on which the dataset covers only one meal, i.e., either lunch or dinner?")
 sns.relplot(x="day", y="time",  data=tips)
+print (" saturday and sunday ")
 
-#2.Was the highest tip given by a man or a woman?
+print ("2.Was the highest tip given by a man or a woman?")
 sns.relplot(x="sex", y="tip", hue="total_bill", data=tips)
+print ("tipper is a male ")
 
-#3. Was the highest tip given for the highest total bill?
+print ("3. Was the highest tip given for the highest total bill?")
 sns.relplot(x="total_bill", y="tip", hue="total_bill", palette="ch:r=-.1,l=.8" , data=tips)
-
+print ("yes")
 
