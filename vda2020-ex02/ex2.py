@@ -62,12 +62,14 @@ plt.imshow(img_hue)
 
 #Exercise 3
 
-############a)
+###########
+#a)
 
 
  
 
-############b)
+###########
+#b)
 
 def covert_hsv_to_rgb(hsv):
     hue = hsv [:,:,0]
@@ -96,6 +98,11 @@ def covert_hsv_to_rgb(hsv):
     rgb = np.stack([r, g, b], axis=-1)
     return rgb.reshape(hsv.shape)
    
+#3)
 
+'''
+Photo editing softwares/applications should have HSV color space over CIEluv. 
+Since CIEluv color spaces are closer to human vision applications like monitors or screens preferably should use CIEluv.
+'''
 
 
