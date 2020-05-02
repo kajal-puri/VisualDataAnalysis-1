@@ -17,6 +17,10 @@ import matplotlib.colors as clr
 import matplotlib.pyplot as plt
 import numpy as np
 
+import seaborn as sns
+import pandas as pd
+sns.set(style="ticks", color_codes=True)
+'''
 #Exercise 1
 #a)
 img = mpimg.imread("oldtimer.png")
@@ -59,6 +63,7 @@ img_hsv = clr.rgb_to_hsv(img)
 img_hsv[:,:,0] = img_hsv[:,:,0] / 5.5
 img_hue = clr.hsv_to_rgb(img_hsv)
 plt.imshow(img_hue)
+'''
 
 #Exercise 3
 
@@ -70,6 +75,7 @@ plt.imshow(img_hue)
 
 ###########
 #b)
+'''
 
 def covert_hsv_to_rgb(hsv):
     hue = hsv [:,:,0]
@@ -99,10 +105,37 @@ def covert_hsv_to_rgb(hsv):
     return rgb.reshape(hsv.shape)
    
 #3)
-
+'''
 '''
 Photo editing softwares/applications should have HSV color space over CIEluv. 
 Since CIEluv color spaces are closer to human vision applications like monitors or screens preferably should use CIEluv.
 '''
+
+#Exercise 4
+
+#tips = sns.load_dataset("tips")
+#sns.catplot(x="day", y="total_bill", hue="sex", kind="swarm", data=tips);
+
+xl = pd.read_excel("chronic_kidney_disease_numerical.xls" )
+melt = pd.melt(xl, id_vars=['class'])
+#print(melt)
+ckd = melt[melt['class']=='ckd']
+notckd = melt[melt['class']=='notckd']
+#print(ckd)
+#f)
+ckd = ckd[ckd['variable']!='white blood cell count']
+#sns.catplot(x='value', y='variable', kind="box", data=ckd)
+notckd = melt[melt['variable']!='white blood cell count']
+#melt = melt[melt['variable']!='white blood cell count']
+#sns.catplot(x='value', y='variable', kind="box", data=notckd)
+sns.catplot(x='class', y='value', hue='class', col='variable', kind="box", data=melt, col_wrap=5, sharey=False)
+#g)
+# highly indicative of chronic kidney disease - blood glucose random
+# mostly unrelated  - specific gravity 
+
+
+
+
+
 
 
