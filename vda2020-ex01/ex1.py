@@ -13,7 +13,7 @@ sns.set(style="darkgrid")
 
 tips = sns.load_dataset("tips")
 fmri = sns.load_dataset("fmri")
-print(fmri)
+print(tips)
 #sns.relplot(x="total_bill", y="tip", data=tips)
 #sns.relplot(x="total_bill", y="tip", hue="smoker", style="size", data=tips)
 #sns.relplot(x="total_bill", y="tip", hue="size", palette="ch:r=-.5,l=.8", size="size", data=tips)
