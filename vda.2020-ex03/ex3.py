@@ -20,7 +20,7 @@ import seaborn as sns
 import pandas as pd
 
 
-'''
+
 #########################################
 #Exercise 1
 
@@ -55,13 +55,13 @@ logprob = gaussian.score_samples(x_d[:, None])
 #plt.plot(p, np.full_like(p, -0.01), '|k', markeredgewidth=1)
 #plt.ylim(-0.02, 0.22)
 
-linear = KernelDensity(bandwidth=1.0, kernel='linear')
+linear = KernelDensity(bandwidth=1, kernel='linear')
 linear.fit(p[:,None])
 
 x_d = np.linspace(-4, 8, 1000)
 
 logprob = linear.score_samples(x_d[:, None])
-plt.fill_between(x_d, np.exp(logprob), alpha=0.5)
+plt.fill_between(x_d, np.exp(logprob), alpha=0.8)
 plt.plot(p, np.full_like(p, -0.01), '|k', markeredgewidth=1)
 plt.ylim(-0.02, 0.22)
 
@@ -70,6 +70,31 @@ plt.ylim(-0.02, 0.22)
 #linear where the curve consists of straighter lines 
 
 #d)
+
+gaussian1 = KernelDensity(bandwidth=1.0, kernel='gaussian')
+gaussian2 = KernelDensity(bandwidth=2.0, kernel='gaussian')
+gaussian3 = KernelDensity(bandwidth=0.5, kernel='gaussian')
+gaussian4 = KernelDensity(bandwidth=0.1, kernel='gaussian')
+gaussian5 = KernelDensity(bandwidth=3, kernel='gaussian')
+
+gaussian1.fit(p[:,None])
+gaussian2.fit(p[:,None])
+gaussian3.fit(p[:,None])
+gaussian4.fit(p[:,None])
+gaussian5.fit(p[:,None])
+
+
+
+logprob = linear.score_samples(x_d[:, None])
+plt.fill_between(x_d, np.exp(logprob), alpha=0.8)
+plt.plot(p, np.full_like(p, -0.01), '|k', markeredgewidth=1)
+plt.ylim(-0.02, 0.22)
+
+
+#e)
+# The bandwidth of the KDE gives a distance or the scope for the data to normalize and thus we see smoother curves as we increase
+# the bandwidth. Different Kernel functions in turn helps in representing for better analysis. 
+
 '''
 #########################################
 #Exercise 2
@@ -84,7 +109,7 @@ quality = xl['quality']
 sns.distplot(quality, kde=False, rug=True);
 
 
-
+'''
 
 
 
