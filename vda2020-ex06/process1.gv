@@ -1,0 +1,3 @@
+graph G {
+	uniCelS -- uniCelShape [len=3.00 penwidth=6.0]
+}

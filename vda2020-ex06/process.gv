@@ -1,0 +1,4 @@
+graph G {
+	size="6,6"
+	uniCelS -- uniCelShape
+}
