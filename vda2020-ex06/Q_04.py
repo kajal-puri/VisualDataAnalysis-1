@@ -11,6 +11,7 @@ import dash_html_components as html
 import seaborn as sns
 import plotly.express as px
 import plotly.graph_objs as go
+import plotly.figure_factory as ff
 import pandas as pd
 from dash.dependencies import Input, Output
 import json
@@ -33,7 +34,7 @@ print(new_data)
 index_vals = new_data['class'].astype('category').cat.codes
 
 class_vals = new_data['class'].astype('category')
-
+'''
 fig = go.Figure(data=go.Splom(
                   dimensions=[dict(label='pPKCG_N', values=new_data['pPKCG_N']),
                               dict(label='pP70S6_N', values=new_data['pP70S6_N']),
@@ -51,12 +52,28 @@ fig = go.Figure(data=go.Splom(
                                         color='rgb(230,230,230)')),
                   hovertext = new_data['class'],
                   hoverinfo = 'all',
+                  selected = dict(marker = dict (opacity=0.4,
+                                                 size=2)),
                   #text=textd,
-                  #diagonal=dict(visible=True)
+                  diagonal=dict(visible=True,type = 'histogram')
                   ))
+'''
 
-#fig = px.scatter_matrix(new_data)
-                  
+fig = px.scatter_matrix(new_data,
+                        dimensions=["pPKCG_N", "pP70S6_N", "pS6_N", "pGSK3B_N", "ARC_N"],
+                        color = 'class',
+                        title="Parallel Coordinates Plot",
+                        hover_name  = 'class'
+                        #diagonal = 'histogram'
+                        )
+
+
+'''
+fig = ff.create_scatterplotmatrix ( new_data,
+                                   index = ["pPKCG_N", "pP70S6_N", "pS6_N", "pGSK3B_N", "ARC_N"],
+                                   diag = 'histogram',
+                                   colormap_type = 'class')
+'''                  
 fig.update_layout(
     title='Parallel Coordinates Plot',
     width=1000,
