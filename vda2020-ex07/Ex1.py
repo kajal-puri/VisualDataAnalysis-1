@@ -182,6 +182,8 @@ technique_mapper = {
     'isomap': isomap_graph(),
     'tsne': tsne_graph()
 }
+
+#Part 1a
 @app.callback(dash.dependencies.Output('dimension-reduction-graph', 'figure'),
               [dash.dependencies.Input('dr-technique', 'value')])
 
@@ -190,7 +192,7 @@ def selected_dimension_reduction_graph(dr_technique):
     logging.debug('Dropdown Value:', dr_technique)
 
     return technique_mapper.get(dr_technique, isomap_graph())
-
+#Part 1b and c
 @app.callback(dash.dependencies.Output('two-feature-graph', 'figure'), [
     dash.dependencies.Input('two-feature-graph-x', 'value'),
     dash.dependencies.Input('two-feature-graph-y', 'value'),
